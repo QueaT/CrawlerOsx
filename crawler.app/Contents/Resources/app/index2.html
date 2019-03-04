@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div class='wrapper'>
+        <div class="txt-wrap">
+                <p class="info-preb"></p>
+        </div>
+        <div class="button-wrap">
+                <button class="redr">Zobacz najnowszą wersje</button>
+                <button class="close">Zamknij Powiadomienie</button>
+                <button class="add">Dodaj email</button>
+        </div>
+         
+    </div>
+    
+    <script>
+       const electron = require('electron') 
+       const {ipcRenderer} = electron
+
+
+       const closeBut = document.querySelector('.close').addEventListener('click',()=>{
+        ipcRenderer.send('closeiT',closeBut);
+       })
+       const butonRedr= document.querySelector('.redr').addEventListener('click',()=>{
+            ipcRenderer.send('new','jeden');
+       });
+
+       const addEmail = document.querySelector('.add').addEventListener('click',()=>{
+           ipcRenderer.send('email',null)
+       })
+
+
+
+    
+     var request = require('request');
+     var cheerio  = require('cheerio');
+     const prebP = document.querySelector('.info-preb')
+     request('https://github.com/prebid/Prebid.js/releases',function(err,res,body){
+if(!err && res.statusCode === 200) {
+    const $ = cheerio.load(body);
+    const select = $('.release-header a').text().substr(0,10);
+    prebP.textContent = 'Dostepna jest nowa wersja ' + select;
+   
+}
+
+})
+
+        function doNotify(){
+        Notification.requestPermission().then(function(result) {
+            const myNot = new Notification('Prebid Powiadomienie',{
+                'body':'Dostepna nowa wersja;)'
+            });
+        })
+    }
+    doNotify()
+
+    </script>
+</body>
+</html>

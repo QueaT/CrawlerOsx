@@ -1,0 +1,40 @@
+body{
+    background-color: rgba(0, 0, 0, 0.88);
+}
+.wrapper{
+ display: flex;
+ height: 100vh;
+ flex-direction: column;
+}
+p{
+    color: #ff0404;;
+    font-style: normal; 
+    font-size: 2rem;
+    text-align: center;
+    margin: 0;
+    font-family: monospace;
+}
+.button-wrap{
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 60%;
+    align-items: center;
+}
+button{
+    width: 60%;
+    border-radius: 30px;
+    height: 25%;
+    border: none;
+    outline: none;
+    background-color: #9c0101;
+    color: white;
+    font-size: 0.8rem;
+    transition: 0.3s linear;
+}
+button:hover{
+    background-color: #f10303;
+}
