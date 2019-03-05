@@ -31,7 +31,8 @@
 
               const button = document.querySelector('.subm').addEventListener('click',()=>{
               kontaktyJs.kontakty.forEach(elm =>{
-               if(inpVal.value === elm)
+                  console.log(inpVal.value,elm)
+               if(inpVal.value == elm)
                {
                 alert('Ten E-mail jest juz dodany')
                 checkF = false;

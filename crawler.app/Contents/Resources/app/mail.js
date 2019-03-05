@@ -7,20 +7,20 @@ const {app}= require('electron');
 
 const sendEmail =(person,subj,messenge,status)=>{
 
-    let transporter = nodemailer.createTransport({
-        host: "smtp.poczta.onet.pl",
-        port: 587,
-        auth: {
-            user: 'kuba007d@vp.pl',
-            pass: '2012end'
-        },
+  let transporter = nodemailer.createTransport({
+    host: "smtp.wp.pl",
+    port: 465,
+    auth: {
+        user: 'prebid-test@wp.pl',
+        pass: 'Eminem007d'
+    },
         tls: {
           rejectUnauthorized: false
         }
       });
    
       let HelperOptions = {
-        from: '"Prebid-aktualizacja" <kuba007d@vp.pl',
+        from: '"Prebid-aktualizacja" <prebid-test@wp.pl',
         to: `${person}`,
         subject: `${subj}`,
         text: `${messenge}`

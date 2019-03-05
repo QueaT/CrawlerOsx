@@ -18,15 +18,16 @@ app.setLoginItemSettings({
 
 if(!err && res.statusCode === 200) {
     const $ = cheerio.load(body);
-    const select = $('.release-header a').text().replace(/[^0-9]/g,'').replace(/(?!^)(?=(?:\d{4})+(?:\.|$))/gm, ' ').substr(0,3);
+    const select = $('.release-header a').text().replace(/[^0-9]/g,'').replace(/(?!^)(?=(?:\d{4})+(?:\.|$))/gm, ' ').substr(0,2);
     let value = fs.readFileSync(__dirname + '/nowyPrebid.json','utf8');
+    console.log(select);
     value = JSON.parse(value);
     if(value.currentValue < select){
         electronHandler('index2.html',true);
         elm = select;
         if(kontArr.kontakty.length){
           kontArr.kontakty.forEach(kont =>{
-            sendEmail.sendEmail(kont,'kuba-test-prebid','prebid',true); 
+            sendEmail.sendEmail(kont,'ostatnitest2','prebid',true); 
           })
         }
      }
